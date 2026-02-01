@@ -168,6 +168,15 @@ app.use('/api/reservas', reservaRoutes);
 app.use('/api/usuarios', usuariosRoutes);
 app.use('/api/notificaciones', notificacionesRoutes);
 
+// Rutas espejo sin prefijo /api (compatibilidad)
+app.use('/auth', authLimiter, authRoutes);
+app.use('/comidas', comidaRoutes);
+app.use('/ordenes', ordenRoutes);
+app.use('/admin', adminRoutes);
+app.use('/reservas', reservaRoutes);
+app.use('/usuarios', usuariosRoutes);
+app.use('/notificaciones', notificacionesRoutes);
+
 // Ruta de prueba
 app.get('/', (req, res) => {
     res.send('API Tabac Web funcionando 🚀');
