@@ -15,10 +15,23 @@ const connectDB = require('./config/database');
 const app = express();
 const server = http.createServer(app);
 
+const allowedOrigins = (process.env.FRONTEND_URLS || process.env.FRONTEND_URL || 'http://localhost:5173')
+  .split(',')
+  .map(origin => origin.trim())
+  .filter(Boolean);
+
+const isOriginAllowed = (origin) => {
+  if (!origin) return true; // permitir requests sin Origin (Postman, curl)
+  return allowedOrigins.includes(origin);
+};
+
 // Configurar Socket.IO con CORS
 const io = new Server(server, {
   cors: {
-    origin: process.env.FRONTEND_URL || 'http://localhost:5173',
+    origin: (origin, callback) => {
+      if (isOriginAllowed(origin)) return callback(null, true);
+      return callback(new Error('Not allowed by CORS'));
+    },
     methods: ['GET', 'POST'],
     credentials: true
   }
@@ -33,7 +46,10 @@ app.use(helmet());
 
 // CORS configurado (ajusta el origin según tu frontend)
 const corsOptions = {
-  origin: process.env.FRONTEND_URL || 'http://localhost:5173',
+  origin: (origin, callback) => {
+    if (isOriginAllowed(origin)) return callback(null, true);
+    return callback(new Error('Not allowed by CORS'));
+  },
   credentials: true,
   optionsSuccessStatus: 200
 };
