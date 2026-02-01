@@ -87,6 +87,12 @@ const authLimiter = rateLimit({
 // Body parser
 app.use(express.json());
 
+// Desactivar caché para evitar respuestas 304
+app.use((req, res, next) => {
+  res.setHeader('Cache-Control', 'no-store');
+  next();
+});
+
 
 // Archivos estáticos
 //app.use(express.static(path.join(__dirname, 'public')));
