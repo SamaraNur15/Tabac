@@ -1,0 +1,66 @@
+### Test Login Admin
+POST http://localhost:3000/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "admin@tabac.com",
+  "password": "Admin123!"
+}
+
+###
+
+### Variables (reemplaza TOKEN_ADMIN con el token que recibas del login)
+@TOKEN_ADMIN = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTIzYmM2NWVjMDU1OWE4MTlmMWRkOTciLCJlbWFpbCI6ImFkbWluQHRhYmFjLmNvbSIsIm5vbWJyZSI6IkFkbWluIFByaW5jaXBhbCIsInJvbCI6ImFkbWluIiwiaWF0IjoxNzYzOTUxMjk0LCJleHAiOjE3NjQ1NTYwOTR9.7zhJj35-O-NeC-Gq8k0p2Pry4tFCwA9Htvxs9tExM54
+
+### Test Registro de Cajero (solo admin puede hacerlo)
+POST http://localhost:3000/api/auth/register
+Content-Type: application/json
+Authorization: Bearer {{TOKEN_ADMIN}}
+
+{
+  "nombre": "Juan Pérez",
+  "email": "cajero@tabac.com",
+  "password": "Cajero123!",
+  "rol": "cajero"
+}
+
+###
+
+### Test Login Cajero (ejecuta este primero y copia el token)
+POST http://localhost:3000/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "cajero@tabac.com",
+  "password": "Cajero123!"
+}
+
+###
+
+# ⚠️ IMPORTANTE: Reemplaza con el token que recibas del login del cajero arriba
+@TOKEN_CAJERO = pega_aqui_el_token_del_cajero
+
+### Test Intento de registro con token de cajero (DEBE FALLAR con 403)
+POST http://localhost:3000/api/auth/register
+Content-Type: application/json
+Authorization: Bearer {{TOKEN_CAJERO}}
+
+{
+  "nombre": "Pedro López",
+  "email": "otro@tabac.com",
+  "password": "Test123!",
+  "rol": "cajero"
+}
+
+###
+
+### Test Registro sin token (debe fallar)
+POST http://localhost:3000/api/auth/register
+Content-Type: application/json
+
+{
+  "nombre": "Intruso",
+  "email": "intruso@tabac.com",
+  "password": "Hack123!",
+  "rol": "admin"
+}

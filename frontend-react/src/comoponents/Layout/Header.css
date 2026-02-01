@@ -1,0 +1,339 @@
+/* src/comoponents/Layout/Header.css */
+
+.cart-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.cart-icon {
+  width: 20px;
+  height: 20px;
+  stroke-width: 2.5;
+}
+
+.cart-text {
+  display: inline;
+}
+
+@media (max-width: 768px) {
+  .cart-text {
+    display: none;
+  }
+  
+  .cart-icon {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.cart-badge {
+  position: absolute;
+  top: -8px;
+  right: -10px;
+  background-color: #ff6b00;
+  color: white;
+  font-size: 0.75rem;
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 10px;
+  min-width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  animation: badge-pop 0.3s ease-out;
+}
+
+@keyframes badge-pop {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Opcional: efecto hover en el link del carrito */
+.cart-link:hover .cart-badge {
+  background-color: #ff8533;
+  transform: scale(1.1);
+  transition: all 0.2s ease;
+}
+
+/* Estilos para el menú de usuario */
+.user-menu {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-left: 1rem;
+  padding-left: 1rem;
+  border-left: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.user-greeting {
+  color: rgb(6, 6, 6);
+  font-weight: 600;
+  font-size: 0.95rem;
+  white-space: nowrap;
+  background: linear-gradient(135deg, #f11b1b 0%, #121212 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.logout-button {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.logout-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.login-link {
+  background: rgba(255, 255, 255, 0.15);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  padding: 0.5rem 1.2rem;
+  border-radius: 8px;
+  color: white;
+  font-weight: 700;
+  transition: all 0.3s ease;
+  margin-left: 1rem;
+}
+
+.login-link:hover {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Botón de rastrear pedidos */
+.track-order-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.track-order-btn svg {
+  stroke-width: 2.5;
+}
+
+.track-text {
+  display: inline;
+}
+
+/* Panel de búsqueda de pedidos */
+.order-search-panel {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.order-search-content {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2rem;
+  position: relative;
+}
+
+.close-search {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: #f1f5f9;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.25rem;
+  color: #64748b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.close-search:hover {
+  background: #e2e8f0;
+  color: #1e293b;
+  transform: rotate(90deg);
+}
+
+.order-search-content h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #1e293b;
+  text-align: center;
+}
+
+.search-description {
+  text-align: center;
+  color: #64748b;
+  font-size: 0.9375rem;
+  margin: 0 0 1.5rem 0;
+}
+
+.search-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.search-input-group {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-input-group svg {
+  position: absolute;
+  left: 1rem;
+  color: #94a3b8;
+  pointer-events: none;
+}
+
+.search-input {
+  width: 100%;
+  padding: 1rem 1rem 1rem 3rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-family: inherit;
+  transition: all 0.2s ease;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #fb9e48;
+  box-shadow: 0 0 0 4px rgba(251, 158, 72, 0.1);
+}
+
+.search-input::placeholder {
+  color: #cbd5e1;
+}
+
+.search-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem 2rem;
+  background: linear-gradient(135deg, #fb9e48 0%, #ff6b00 100%);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(255, 133, 18, 0.3);
+}
+
+.search-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 133, 18, 0.4);
+}
+
+.search-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.search-help {
+  text-align: center;
+  padding: 1rem;
+  background: #f8fafc;
+  border-radius: 8px;
+  margin-top: 0.5rem;
+}
+
+.search-help small {
+  color: #64748b;
+  font-size: 0.875rem;
+}
+
+/* Responsive para móviles */
+@media (max-width: 768px) {
+  .track-text {
+    display: none;
+  }
+
+  .order-search-content {
+    padding: 1.5rem 1rem;
+  }
+
+  .order-search-content h3 {
+    font-size: 1.25rem;
+  }
+
+  .search-input {
+    padding: 0.875rem 0.875rem 0.875rem 2.75rem;
+    font-size: 0.9375rem;
+  }
+
+  .search-btn {
+    padding: 0.875rem 1.5rem;
+    font-size: 0.9375rem;
+  }
+
+  .user-menu {
+    flex-direction: column;
+    gap: 0.5rem;
+    padding-left: 0;
+    border-left: none;
+    margin-left: 0;
+    margin-top: 0.5rem;
+  }
+
+  .user-greeting {
+    font-size: 0.85rem;
+  }
+
+  .logout-button,
+  .login-link {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.85rem;
+  }
+}

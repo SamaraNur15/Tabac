@@ -1,0 +1,63 @@
+/* src/Pages/CartPage.css */
+  min-height: 100vh;
+  background-color: #f7efe5;
+  color: white;
+  padding: 1.5rem;
+}
+
+.logo-carrito {
+  text-align: center;
+  padding: 1rem;
+}
+
+.logo-carrito img {
+  max-height: 120px;
+}
+
+.contenedor-carrito {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.contenedor-carrito h1 {
+  color: rgb(33, 33, 33);
+  margin-bottom: 2rem;
+  text-align: center;
+  font-size: 2rem;
+}
+
+.lista-carrito {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.loading-state {
+  text-align: center;
+  padding: 3rem;
+  font-size: 1.2rem;
+  color: #ccc;
+}
+
+.error-box {
+  background: #ff4d4d22;
+  border: 1px solid #ff4d4d;
+  color: #ff9999;
+  padding: 1.5rem;
+  border-radius: 10px;
+  text-align: center;
+  margin: 2rem 0;
+}
+
+@media (max-width: 768px) {
+  .contenedor-carrito {
+    padding: 0.5rem;
+  }
+
+  .contenedor-carrito h1 {
+    font-size: 1.5rem;
+  }
+}
+/* Módulo de carrito deshabilitado */

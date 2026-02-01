@@ -1,0 +1,57 @@
+### Login Admin
+POST http://localhost:3000/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "admin@tabac.com",
+  "password": "Admin123!"
+}
+
+###
+
+@TOKEN = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTIzYmM2NWVjMDU1OWE4MTlmMWRkOTciLCJlbWFpbCI6ImFkbWluQHRhYmFjLmNvbSIsIm5vbWJyZSI6IkFkbWluIFByaW5jaXBhbCIsInJvbCI6ImFkbWluIiwiaWF0IjoxNzYzOTUxMjk0LCJleHAiOjE3NjQ1NTYwOTR9.7zhJj35-O-NeC-Gq8k0p2Pry4tFCwA9Htvxs9tExM54
+
+### GET Dashboard
+GET http://localhost:3000/api/admin/dashboard
+Authorization: Bearer {{TOKEN}}
+
+###
+
+### GET Órdenes Pendientes
+GET http://localhost:3000/api/admin/ordenes/pendientes
+Authorization: Bearer {{TOKEN}}
+
+###
+
+### GET Todas las Órdenes
+GET http://localhost:3000/api/admin/ordenes
+Authorization: Bearer {{TOKEN}}
+
+###
+
+### GET Órdenes Aceptadas
+GET http://localhost:3000/api/admin/ordenes?estado=aceptada
+Authorization: Bearer {{TOKEN}}
+
+###
+
+### PATCH Aceptar Orden (reemplaza ORDER_ID con el ID real de una orden)
+PATCH http://localhost:3000/api/admin/ordenes/ORDER_ID/estado
+Content-Type: application/json
+Authorization: Bearer {{TOKEN}}
+
+{
+  "estado": "aceptada"
+}
+
+###
+
+### PATCH Rechazar Orden
+PATCH http://localhost:3000/api/admin/ordenes/ORDER_ID/estado
+Content-Type: application/json
+Authorization: Bearer {{TOKEN}}
+
+{
+  "estado": "rechazada",
+  "motivoRechazo": "Productos no disponibles"
+}

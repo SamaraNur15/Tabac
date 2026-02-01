@@ -1,0 +1,6 @@
+node_modules
+.rnv
+package-lock.json
+.env
+.env.local
+.env.production

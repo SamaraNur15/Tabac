@@ -1,0 +1,79 @@
+/* src/comoponents/Home/RegistroCTA.css */
+.registro-cta {
+  background: linear-gradient(135deg, #7c1c1c 0%, #611717 100%);
+  padding: 3rem 1rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.registro-cta::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at top right, rgba(255,255,255,0.1), transparent);
+  pointer-events: none;
+}
+
+.registro-contenido {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.registro-texto {
+  font-size: 1.3rem;
+  color: white;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.registro-texto strong {
+  display: block;
+  font-size: 1.5rem;
+  margin-top: 1rem;
+  color: #ff7c00;
+}
+
+.btn-registro {
+  display: inline-block;
+  background-color: #ffffff;
+  color: #7c1c1c;
+  padding: 1rem 3rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.btn-registro:hover {
+  background-color: #ff7c00;
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(255, 124, 0, 0.5);
+}
+
+@media (max-width: 768px) {
+  .registro-texto {
+    font-size: 1.1rem;
+  }
+
+  .registro-texto strong {
+    font-size: 1.3rem;
+  }
+
+  .btn-registro {
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+    width: 100%;
+    max-width: 300px;
+  }
+}

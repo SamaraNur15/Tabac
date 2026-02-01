@@ -1,0 +1,121 @@
+/* Login.css */
+
+.login-page {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #ff7c00 0%, #ff5500 100%);
+    padding: 2rem;
+}
+
+.login-form-wrapper {
+    background: white;
+    padding: 3rem 2rem;
+    border-radius: 16px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.login-form-wrapper h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.login-subtitle {
+    color: #666;
+    font-size: 0.95rem;
+    margin-bottom: 2rem;
+    font-weight: 500;
+}
+
+.login-form input {
+    width: 100%;
+    padding: 0.85rem 1rem;
+    border-radius: 10px;
+    border: 2px solid #e0e0e0;
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+    background: #fafafa;
+    transition: all 0.2s ease;
+}
+
+.login-form input:focus {
+    outline: none;
+    border-color: #ff7c00;
+    background: white;
+    box-shadow: 0 0 0 4px rgba(255, 124, 0, 0.2);
+}
+
+.login-form button {
+    width: 100%;
+    padding: 1rem;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: white;
+    background: linear-gradient(135deg, #ff7c00 0%, #ff5500 100%);
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 124, 0, 0.4);
+}
+
+.login-form button:hover {
+    background: linear-gradient(135deg, #ff8c1a 0%, #ff6600 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 124, 0, 0.6);
+}
+
+.login-form button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.login-error {
+    color: #d32f2f;
+    background: #ffebee;
+    padding: 0.75rem;
+    border-radius: 8px;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+    text-align: left;
+    border-left: 4px solid #d32f2f;
+}
+
+.toggle-mode {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #e0e0e0;
+}
+
+.toggle-mode p {
+    color: #666;
+    font-size: 0.95rem;
+    margin: 0;
+}
+
+.toggle-button {
+    background: none;
+    border: none;
+    color: #ff7c00;
+    font-weight: 700;
+    cursor: pointer;
+    text-decoration: underline;
+    font-size: 0.95rem;
+    padding: 0;
+    transition: color 0.2s ease;
+}
+
+.toggle-button:hover {
+    color: #ff5500;
+}
