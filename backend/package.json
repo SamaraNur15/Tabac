@@ -2,12 +2,13 @@
   "name": "api-comidas",
   "version": "1.0.0",
   "main": "index.js",
-  "scripts": {
-    "start": "nodemon app.js",
-    "reset-password": "node resetAdminPassword.js",
-    "list-users": "node listUsers.js",
-    "cleanup-notifications": "node cleanupNotifications.js"
-  },
+ "scripts": {
+  "start": "node app.js",
+  "dev": "nodemon app.js",
+  "reset-password": "node resetAdminPassword.js",
+  "list-users": "node listUsers.js",
+  "cleanup-notifications": "node cleanupNotifications.js"
+},
   "keywords": [],
   "author": "",
   "license": "ISC",
