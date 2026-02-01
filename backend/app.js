@@ -15,7 +15,7 @@ const connectDB = require('./config/database');
 const app = express();
 const server = http.createServer(app);
 
-const allowedOrigins = (process.env.FRONTEND_URLS || process.env.FRONTEND_URL || 'http://localhost:5173')
+const allowedOrigins = (process.env.FRONTEND_URLS || process.env.FRONTEND_URL || 'http://localhost:5173,https://tabacweb.vercel.app')
   .split(',')
   .map(origin => origin.trim())
   .filter(Boolean);
