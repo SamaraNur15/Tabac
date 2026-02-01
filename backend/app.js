@@ -22,7 +22,16 @@ const allowedOrigins = (process.env.FRONTEND_URLS || process.env.FRONTEND_URL ||
 
 const isOriginAllowed = (origin) => {
   if (!origin) return true; // permitir requests sin Origin (Postman, curl)
-  return allowedOrigins.includes(origin);
+  if (allowedOrigins.includes(origin)) return true;
+
+  try {
+    const { hostname } = new URL(origin);
+    if (hostname.endsWith('.vercel.app')) return true;
+  } catch (error) {
+    return false;
+  }
+
+  return false;
 };
 
 // Configurar Socket.IO con CORS
