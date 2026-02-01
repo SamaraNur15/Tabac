@@ -13,6 +13,7 @@ require('dotenv').config({ path: path.join(__dirname, '.env') });
 const connectDB = require('./config/database');
 
 const app = express();
+app.set('etag', false);
 const server = http.createServer(app);
 
 const allowedOrigins = (process.env.FRONTEND_URLS || process.env.FRONTEND_URL || 'http://localhost:5173,https://tabacweb.vercel.app')
@@ -87,9 +88,12 @@ const authLimiter = rateLimit({
 // Body parser
 app.use(express.json());
 
-// Desactivar caché para evitar respuestas 304
+// Desactivar caché y validación para evitar respuestas 304
 app.use((req, res, next) => {
-  res.setHeader('Cache-Control', 'no-store');
+  res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
+  res.setHeader('Pragma', 'no-cache');
+  res.setHeader('Expires', '0');
+  res.setHeader('Surrogate-Control', 'no-store');
   next();
 });
 
