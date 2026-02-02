@@ -1,10 +1,11 @@
 // src/App.jsx
 import { Routes, Route } from "react-router-dom";
 import Login from "./comoponents/Login";
-import Layout from "./comoponents/Layout/layout";   
+import Layout from "./comoponents/Layout/Layout.jsx";   
 import HomePage from "./Pages/HomePage";
 import CartaPage from "./Pages/CartaPage";      
 import ContactoPage from "./Pages/ContactoPage";
+import CartPage from "./Pages/CartPage";
 
 // Admin components
 import AdminLayout from "./comoponents/Admin/AdminLayout";
@@ -26,6 +27,7 @@ export default function App() {
           <Route index element={<HomePage />} />
           <Route path="login" element={<Login />} />
           <Route path="carta" element={<CartaPage />} />
+          <Route path="carrito" element={<CartPage />} />
           <Route path="contacto" element={<ContactoPage />} />
         </Route>
 

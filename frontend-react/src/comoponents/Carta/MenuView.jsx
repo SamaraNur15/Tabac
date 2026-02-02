@@ -11,6 +11,13 @@ function MenuView() {
   const [category, setCategory] = useState("Todos");
   const [sortBy, setSortBy] = useState("relevancia"); // precio-asc, precio-desc, nombre-asc
 
+  const CATEGORY_LABELS = {
+    Todos: "Todos",
+    // Ejemplos:
+    // "Platos": "Platos principales",
+    // "Bebidas": "Bebidas frías",
+  };
+
   const searchDebounced = useDebouncedValue(search, 200);
 
   // Asegurar que items sea siempre un array
@@ -52,7 +59,7 @@ function MenuView() {
               className={`chip ${cat === category ? "chip--active" : ""}`}
               onClick={() => setCategory(cat)}
             >
-              {cat}
+              {CATEGORY_LABELS[cat] || cat}
             </button>
           ))}
         </div>

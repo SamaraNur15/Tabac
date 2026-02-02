@@ -76,12 +76,19 @@
   border-left: 2px solid rgba(255, 255, 255, 0.2);
 }
 
+.user-menu .nav__link,
+.user-menu .logout-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .user-greeting {
   color: rgb(6, 6, 6);
   font-weight: 600;
   font-size: 0.95rem;
   white-space: nowrap;
-  background: linear-gradient(135deg, #f11b1b 0%, #121212 100%);
+  background: linear-gradient(135deg, #f11b1b 0%, #f98204 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -143,6 +150,66 @@
 
 .track-text {
   display: inline;
+}
+
+/* === CARRITO EN HEADER === */
+.nav__cart {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0.5rem;
+  border-radius: 8px;
+  color: white;
+  text-decoration: none;
+}
+
+.nav__cart:hover {
+  background: rgba(255, 124, 0, 0.2);
+  transform: scale(1.1);
+}
+
+.nav__cart-icon {
+  display: inline-block;
+}
+
+.nav__cart-badge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: linear-gradient(135deg, #ff7c00 0%, #ff4d00 100%);
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.2rem 0.5rem;
+  border-radius: 10px;
+  min-width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(255, 124, 0, 0.4);
+  animation: badgePop 0.3s ease-out;
+}
+
+@keyframes badgePop {
+  0% {
+    transform: scale(0) rotate(-45deg);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1) rotate(0);
+  }
+}
+
+.nav__cart:hover .nav__cart-badge {
+  background: linear-gradient(135deg, #ff8c1a 0%, #ff6600 100%);
+  transform: scale(1.1);
 }
 
 /* Panel de búsqueda de pedidos */
@@ -325,6 +392,7 @@
     border-left: none;
     margin-left: 0;
     margin-top: 0.5rem;
+    align-items: center;
   }
 
   .user-greeting {
@@ -335,5 +403,20 @@
   .login-link {
     padding: 0.4rem 0.8rem;
     font-size: 0.85rem;
+  }
+
+  .user-menu .nav__link,
+  .user-menu .logout-button {
+    width: 100%;
+    max-width: 220px;
+    justify-content: center;
+  }
+
+  .nav__cart {
+    font-size: 1.3rem;
+  }
+
+  .nav__cart-badge {
+    font-size: 0.65rem;
   }
 }

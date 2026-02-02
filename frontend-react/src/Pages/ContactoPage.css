@@ -1,17 +1,17 @@
 /* src/Pages/ContactoPage.css */
 .contacto-page {
   min-height: 100vh;
-  background: linear-gradient(135deg, #fafafa 0%, #f0f0f0 100%);
+  background: linear-gradient(135deg, #373738 0%, #323131 100%);
   padding-bottom: 3rem;
 }
 
 /* Hero Section */
 .contacto-hero {
-  background: linear-gradient(135deg, #ff7c00 0%, #ff5500 100%);
+  background: linear-gradient(135deg, #ff7c00 0%, #ff4d00 100%);
   color: white;
   padding: 4rem 2rem;
   text-align: center;
-  box-shadow: 0 4px 20px rgba(255, 124, 0, 0.3);
+  box-shadow: 0 8px 30px rgba(255, 124, 0, 0.25);
 }
 
 .contacto-hero__title {
@@ -55,10 +55,11 @@
 }
 
 .info-card {
-  background: white;
+  background: linear-gradient(135deg, #171614 0%, #1f1c19 100%);
   padding: 2rem;
   border-radius: 16px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.06);
   transition: all 0.3s ease;
 }
 
@@ -74,13 +75,13 @@
 
 .info-card__title {
   font-size: 1.3rem;
-  color: #333;
+  color: #f4f4f5;
   margin: 0 0 0.75rem 1rem;
   font-weight: 700;
 }
 
 .info-card__text {
-  color: #666;
+  color: #c7c7cc;
   font-size: 1rem;
   line-height: 1.6;
   margin: 0 0 0.75rem 1rem;
@@ -100,10 +101,11 @@
 
 /* Social Links */
 .social-links {
-  background: linear-gradient(135deg, #2a2a2a 0%, #1f1f1f 100%);
+  background: linear-gradient(135deg, #1a1816 0%, #121110 100%);
   padding: 2rem;
   border-radius: 16px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);  
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .social-links__title {
@@ -123,8 +125,8 @@
 .social-icon {
   width: 48px;
   height: 48px;
-  background: rgba(255, 124, 0, 0.1);
-  border: 2px solid rgba(255, 124, 0, 0.3);
+  background: rgba(255, 124, 0, 0.12);
+  border: 2px solid rgba(255, 124, 0, 0.35);
   border-radius: 12px;
   display: flex;
   align-items: center;
@@ -148,15 +150,16 @@
 
 /* Formulario */
 .contacto-form-wrapper {
-  background: white;
+  background: linear-gradient(135deg, #171614 0%, #1f1c19 100%);
   padding: 3rem;
   border-radius: 16px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .form-title {
   font-size: 2rem;
-  color: #333;
+  color: #f4f4f5;
   margin: 0 0 2rem;
   font-weight: 700;
 }
@@ -207,31 +210,37 @@
 .form-label {
   font-size: 0.95rem;
   font-weight: 600;
-  color: #333;
+  color: #e7e5e4 !important;
 }
 
 .form-input,
 .form-textarea {
   padding: 0.85rem 1rem;
-  border: 2px solid #e0e0e0;
+  border: 2px solid rgba(255, 255, 255, 0.08);
   border-radius: 10px;
   font-size: 1rem;
   font-family: inherit;
   transition: all 0.2s ease;
-  background: #fafafa;
+  background: #121110;
+  color: #f4f4f5;
 }
 
 .form-input:focus,
 .form-textarea:focus {
   outline: none;
   border-color: #ff7c00;
-  background: white;
-  box-shadow: 0 0 0 4px rgba(255, 124, 0, 0.1);
+  background: #171614;
+  box-shadow: 0 0 0 4px rgba(255, 124, 0, 0.15);
 }
 
 .form-textarea {
   resize: vertical;
   min-height: 120px;
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: #9ca3af;
 }
 
 .form-submit {
@@ -289,17 +298,18 @@
 
 .map-title {
   font-size: 2rem;
-  color: #333;
+  color: #f4f4f5;
   margin: 0 0 1.5rem;
   font-weight: 700;
   text-align: center;
 }
 
 .map-container {
-  background: white;
+  background: #121110;
   padding: 1rem;
   border-radius: 16px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .map-container iframe {

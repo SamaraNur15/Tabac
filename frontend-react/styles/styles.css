@@ -61,7 +61,7 @@
 
 /* Utilidades básicas */
 :root {
-  --bg: #ffffff;
+  --bg: #111010;
   --fg: #111;
   --muted: #666;
   --brand: #ff8512;
@@ -94,52 +94,54 @@ body { margin: 0; font-family: system-ui, Arial, sans-serif; color: var(--fg); b
 
 /* Header */
 .header {
-  background: var(--header-bg);
-  border-bottom: 1px solid var(--header-border);
-  position: sticky;
-  top: 0;
-  z-index: 50;
+  background: #1b1919;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  position: static;
 }
 .header__inner {
-    height: var(--header-h);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap:16px; padding:0 16px
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0px 16px 16px;
 }
 .header__brand {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 10px;
 }
 .header__logo {
-  height: 120px;
+  height: 140px;
   width: auto;
   display: block;
+  margin-bottom: -30px;
 }
 .header__title {
   font-weight: 700;
   letter-spacing: 0.3px;
+  color: #f4f4f5;
 }
 
 /* Navegación */
 .nav {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   flex-wrap: wrap;
+  justify-content: center;
 }
 .nav__link {
   padding: 8px 12px;
   border-radius: 999px;
   text-decoration: none;
-  color: var(--fg);
-  border: 1px solid transparent;
+  color: #f4f4f5;
+  border: 1px solid rgba(255, 255, 255, 0.15);
   transition: 0.15s;
 }
 .nav__link:hover {
-  background: #fff;
-  border-color: var(--header-border);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.25);
 }
 .nav__link.active {
   background: var(--brand);
@@ -148,6 +150,11 @@ body { margin: 0; font-family: system-ui, Arial, sans-serif; color: var(--fg); b
 }
 
 @media (max-width: 768px) {
+  .header__logo {
+    height: 140px;
+    margin-bottom: -30px;
+  }
+
   .nav {
     gap: 12px;
   }
@@ -402,7 +409,8 @@ body { margin: 0; font-family: system-ui, Arial, sans-serif; color: var(--fg); b
   }
   
   .header__logo {
-    height: 80px;
+    height: 140px;
+    margin-bottom: -30px;
   }
   
   .header__title { 
@@ -428,7 +436,8 @@ body { margin: 0; font-family: system-ui, Arial, sans-serif; color: var(--fg); b
   }
   
   .header__logo {
-    height: 60px;
+    height: 140px;
+    margin-bottom: -30px;
   }
   
   .header__title {

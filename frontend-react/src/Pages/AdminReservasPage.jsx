@@ -3,6 +3,8 @@ import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import './AdminReservasPage.css';
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000/api';
+
 export default function AdminReservasPage() {
   const [reservas, setReservas] = useState([]);
   const [fechaSeleccionada, setFechaSeleccionada] = useState(new Date());
@@ -10,14 +12,13 @@ export default function AdminReservasPage() {
   const [horarios, setHorarios] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
-  
+
   // Modal
   const [showModal, setShowModal] = useState(false);
   const [modoEdicion, setModoEdicion] = useState(false);
   const [reservaEditando, setReservaEditando] = useState(null);
-  
+
   // Formulario
-  const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000/api';
   const [formData, setFormData] = useState({
     mesa: '',
     fecha: '',
@@ -30,7 +31,7 @@ export default function AdminReservasPage() {
     personas: 2,
     notas: ''
   });
-        const url = `${API_URL}/reservas?fecha=${fecha}`;
+
   // Filtros
   const [filtroEstado, setFiltroEstado] = useState('todas');
 
@@ -43,17 +44,16 @@ export default function AdminReservasPage() {
     try {
       setLoading(true);
       const token = localStorage.getItem('tabac_auth_token');
-      
       const fecha = fechaSeleccionada.toISOString().split('T')[0];
-      const url = `http://localhost:3000/api/reservas?fecha=${fecha}`;
-      
+      const url = `${API_URL}/reservas?fecha=${fecha}`;
+
       const response = await fetch(url, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
       });
 
-        const response = await fetch(`${API_URL}/reservas/disponibilidad?fecha=${fechaStr}`);
+      if (response.ok) {
         const data = await response.json();
         setReservas(data);
       }
@@ -68,8 +68,8 @@ export default function AdminReservasPage() {
   const cargarDisponibilidad = async (fecha) => {
     try {
       const fechaStr = fecha.toISOString().split('T')[0];
-      const response = await fetch(`http://localhost:3000/api/reservas/disponibilidad?fecha=${fechaStr}`);
-      
+      const response = await fetch(`${API_URL}/reservas/disponibilidad?fecha=${fechaStr}`);
+
       if (response.ok) {
         const data = await response.json();
         setDisponibilidad(data.disponibilidad);
@@ -82,9 +82,9 @@ export default function AdminReservasPage() {
 
   const handleDateChange = (date) => {
     setFechaSeleccionada(date);
-        const url = modoEdicion 
-          ? `${API_URL}/reservas/${reservaEditando._id}`
-          : `${API_URL}/reservas`;
+  };
+
+  const abrirModalNueva = () => {
     setModoEdicion(false);
     setReservaEditando(null);
     setFormData({
@@ -114,10 +114,10 @@ export default function AdminReservasPage() {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    
+
     if (name.startsWith('cliente.')) {
       const campo = name.split('.')[1];
-        const response = await fetch(`${API_URL}/reservas/${reservaId}`, {
+      setFormData(prev => ({
         ...prev,
         cliente: { ...prev.cliente, [campo]: value }
       }));
@@ -128,11 +128,10 @@ export default function AdminReservasPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     try {
       const token = localStorage.getItem('tabac_auth_token');
-      
-      // Validaciones
+
       if (!formData.mesa || !formData.fecha || !formData.hora) {
         alert('Por favor completa todos los campos obligatorios');
         return;
@@ -143,10 +142,10 @@ export default function AdminReservasPage() {
         return;
       }
 
-      const url = modoEdicion 
-        ? `http://localhost:3000/api/reservas/${reservaEditando._id}`
-        const response = await fetch(`${API_URL}/reservas/${reservaId}`, {
-      
+      const url = modoEdicion
+        ? `${API_URL}/reservas/${reservaEditando._id}`
+        : `${API_URL}/reservas`;
+
       const method = modoEdicion ? 'PUT' : 'POST';
 
       const response = await fetch(url, {
@@ -178,7 +177,7 @@ export default function AdminReservasPage() {
     try {
       const token = localStorage.getItem('tabac_auth_token');
       
-      const response = await fetch(`http://localhost:3000/api/reservas/${reservaId}`, {
+      const response = await fetch(`${API_URL}/reservas/${reservaId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -206,7 +205,7 @@ export default function AdminReservasPage() {
     try {
       const token = localStorage.getItem('tabac_auth_token');
       
-      const response = await fetch(`http://localhost:3000/api/reservas/${reservaId}`, {
+      const response = await fetch(`${API_URL}/reservas/${reservaId}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`

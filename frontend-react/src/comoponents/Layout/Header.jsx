@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
 import { NavLink, useNavigate, useLocation } from "react-router-dom";
 import { authService } from "../../utils/auth";
+import { useCart } from "../../Hooks/useCart";
 import "./Header.css";
 
 function Header() {
     const [user, setUser] = useState(null);
+    const { items } = useCart();
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -44,6 +46,10 @@ function Header() {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
+    const canGoToWorkArea = currentUser && ['admin', 'cajero'].includes(currentUser.rol);
+    const isInAdminArea = location.pathname.startsWith('/admin');
+    const cartCount = items.reduce((sum, item) => sum + item.cantidad, 0);
+
     return (
        <header className="header">
       <div className="header__inner container">
@@ -62,10 +68,23 @@ function Header() {
           <NavLink to="/contacto" className="nav__link" onClick={handleNavClick}>
             Contacto
           </NavLink>
-          
+
+          {/* CARRITO */}
+          <NavLink to="/carrito" className="nav__cart" onClick={handleNavClick}>
+            <span className="nav__cart-icon">🛒</span>
+            {cartCount > 0 && (
+              <span className="nav__cart-badge">{cartCount}</span>
+            )}
+          </NavLink>
+
           {currentUser && (
             <div className="user-menu">
               <span className="user-greeting">Hola, {currentUser.nombre}</span>
+              {canGoToWorkArea && !isInAdminArea && (
+                <NavLink to="/admin" className="nav__link" onClick={handleNavClick}>
+                  Área de trabajo
+                </NavLink>
+              )}
               <button onClick={handleLogout} className="nav__link logout-button">
                 Cerrar Sesión
               </button>
