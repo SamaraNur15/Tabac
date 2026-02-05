@@ -41,6 +41,20 @@ const OrdenSchema = new Schema({
     default: 'pendiente', 
     index: true 
   },
+
+  status: {
+    type: String,
+    enum: ['pendiente', 'confirmado', 'cancelado'],
+    default: 'pendiente',
+    index: true
+  },
+
+  channel: {
+    type: String,
+    enum: ['whatsapp', 'web'],
+    default: 'whatsapp',
+    index: true
+  },
   
   motivoRechazo: { type: String, default: null },
   
